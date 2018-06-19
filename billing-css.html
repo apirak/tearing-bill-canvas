@@ -1,0 +1,57 @@
+<html>
+<header>
+  <style>
+    .container{
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+    }      
+    #billing {
+        background-color:aqua;
+        width: 300px;
+        /* -webkit-clip-path: polygon(0% 0%, 0% 96%, 5% 100%, 10% 95%, 15% 100%, 20% 96%, 22% 100%, 29% 95%, 32% 100%, 38% 95%, 100% 95%, 100% 0%);
+        clip-path: polygon(0% 0%, 0% 96%, 5% 100%, 10% 95%, 15% 100%, 20% 96%, 22% 100%, 29% 95%, 32% 100%, 38% 95%, 100% 95%, 100% 0%);  */
+    }
+  </style>
+  <script>
+    function draw() {
+      var billing = document.getElementById('billing');
+      var billingWidth = billing.offsetWidth;
+      var billingHeight = billing.offsetHeight;     
+
+      tearHeight = 10; //px
+      percentHeight = (tearHeight/billingHeight)*100;
+
+      polygonText = "polygon(0% 0%, 0% 100%, ";
+
+      for (i = 0; i < 10; i++) { 
+        offset = i*10;
+        polygonText = polygonText + (offset+5) + "% " + (100-percentHeight) + "%, ";
+        polygonText = polygonText + (offset+10) + "% " + 100 + "%, "        
+      }
+        
+      polygonText = polygonText + "100% 95%, 100% 0%)";
+
+      console.log(polygonText);
+
+      billing.style.clipPath = polygonText;
+    }
+  </script>
+</header>
+<body onload="draw();">
+  <div class="container">
+    <div id="billing">
+        <h2>Bank</h3>
+        <div>superman land man show the land good si</div>
+        <div>superman land man show the land good si</div>
+        <div>superman land man show the land good si</div>
+        <div>superman land man show the land good si</div>
+        <div>superman land man show the land good si</div>
+        <div>superman land man show the land good si</div>
+
+        <div>superman land man show the land good si</div>
+        <div>superman land man show the land good si</div>
+        <div>superman land man show the land good si</div>
+        <div></div>  
+    </div>
+  </div>
+</body>
+</html>
