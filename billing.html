@@ -1,0 +1,77 @@
+<html>
+<header>
+  <script>
+    function drawTear(ctx, w, h) {
+      ctx.lineTo(w+5,h+10);
+      ctx.lineTo(w+10,h);
+    }
+
+    function drawBill(ctx, w, h) {
+      // Create gradient
+      grd = ctx.createLinearGradient(0.000, 150.000, 300.000, 150.000);
+      
+      // Add colors
+      grd.addColorStop(0.000, 'rgba(225, 0, 25, 1.000)');
+      grd.addColorStop(1.000, 'rgba(0, 96, 27, 1.000)');
+    
+      ctx.moveTo(0,0);
+      ctx.lineTo(0,h);
+
+      maxTear = w/10;
+
+      for (i = 0; i < maxTear; i++) { 
+        drawTear(ctx, 10*i, h)
+      }
+
+      ctx.lineTo(w,0);
+      ctx.lineTo(0,0);
+
+      // Fill with gradient
+      ctx.fillStyle = grd;
+      ctx.fill();
+    }
+
+    function draw() {
+      var canvas = document.getElementById('cBilling');
+      var billing = document.getElementById('dBilling');
+
+      _ctx = canvas.getContext('2d');
+
+      var billingWidth = billing.offsetWidth;
+      var billingHeight = billing.offsetHeight;
+
+      _ctx.canvas.width  = billingWidth;
+      _ctx.canvas.height = billingHeight;   
+
+      _ctx.beginPath();
+      _ctx.lineWidth="1";
+      _ctx.strokeStyle="green"; // Green path
+      drawBill(_ctx, billingWidth, billingHeight-10);
+      try {
+        billing.style.background = "url(" + canvas.toDataURL() + ")";
+      } catch (e) {
+        alert(e);
+      }
+    }
+  </script>
+</header>
+<body onload="draw();">
+   
+  <div id="dBilling" style="float:left; width:303px;">
+    <h2>Bank</h3>
+    <div>superman land man show the land good si</div>
+    <div>superman land man show the land good si</div>
+    <div>superman land man show the land good si</div>
+    <div>superman land man show the land good si</div>
+    <div>superman land man show the land good si</div>
+    <div>superman land man show the land good si</div>
+
+    <div>superman land man show the land good si</div>
+    <div>superman land man show the land good si</div>
+    <div>superman land man show the land good si</div>
+    <div></div>    
+  </div>
+  <canvas id='cBilling' style="border:2px solid black; display:none;"></canvas>   
+  <img id="demoImg" src="lamp.jpg" style="display:none"/>  
+</body>
+</html>
